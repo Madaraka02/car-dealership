@@ -1,8 +1,10 @@
 from django.db import models
+from autoslug import AutoSlugField
 
 # Create your models here.
 class Vehicle(models.Model):
     name = models.CharField(max_length=100, null=True, blank=True)
+    slug = AutoSlugField(populate_from='name')
     condition = models.CharField(max_length=100, null=True, blank=True)
     make = models.CharField(max_length=100, null=True, blank=True)
     vehicle_type = models.CharField(max_length=100, null=True, blank=True)
@@ -46,3 +48,39 @@ class VehicleImages(models.Model):
 
     def __str__(self):
         return self.vehicle.name     
+
+class Blog(models.Model):
+    title = models.CharField(max_length=100, null=True, blank=True)
+    image = models.FileField(upload_to='cars/images', null=True, blank=True)
+    slug = AutoSlugField(populate_from='title')
+    snippet = models.CharField(max_length=500, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url 
+
+
+    def __str__(self):
+        return self.title        
+
+class Testimony(models.Model):
+    name = models.CharField(max_length=300, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)   
+
+    def __str__(self):
+        return self.name
+
+
+class Contact(models.Model):
+    email = models.EmailField(max_length=300, null=True, blank=True)   
+    subject = models.CharField(max_length=300, null=True, blank=True)
+    message = models.TextField(null=True, blank=True)
+
+    def __str__(self):
+        return self.email     
