@@ -62,13 +62,6 @@ def blogs(request):
 def feedback(request):
     feedback = Testimony.objects.all().order_by('-id')
     
-    form = TestimonyForm()()
-    if request.method == 'POST':
-        form = TestimonyForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-
     context = {
         'feedback':feedback,
         # 'form':form
@@ -89,6 +82,21 @@ def contact(request):
         'form':form
     }  
     return render(request, 'contact.html', context)      
+
+
+def testimony(request):
+    form = TestimonyForm()
+    if request.method == 'POST':
+        form = TestimonyForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+
+    context ={
+        'form':form
+    }  
+    return render(request, 'testimoy.html', context)   
+
 
 def car(request, slug):
     car = get_object_or_404(Vehicle, slug=slug)
