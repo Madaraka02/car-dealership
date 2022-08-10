@@ -3,4 +3,11 @@ from .views import *
 
 urlpatterns = [
     path('', home, name="home"),
+    path('cars/', cars, name="cars"),
+    path('blogs/', blogs, name="blogs"),
+    path('feedback/', feedback, name="feedback"),
+    path('contact', contact, name="contact"),
+    path('car/<slug:slug/', car, name="car"),
+    path('blog/<slug:slug/', blog, name="blog"),
+
 ]
