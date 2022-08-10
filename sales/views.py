@@ -113,7 +113,12 @@ def blog(request, slug):
     return render(request, 'blog-details.html', context)
 
 
-
+def team(request):
+    team = Team.objects.all().order_by('-id')
+    context = {
+        'team':team
+    }
+    return render(request, 'team.html', context)
 
 
 

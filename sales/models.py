@@ -85,3 +85,28 @@ class Contact(models.Model):
 
     def __str__(self):
         return self.email     
+
+class Team(models.Model):
+    name = models.CharField(max_length=100, null=True, blank=True)
+    image = models.FileField(upload_to='cars/images', null=True, blank=True)
+    department = models.CharField(max_length=500, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    facebook = models.URLField(max_length=200,null=True, blank=True)
+    instagram = models.URLField(max_length=200,null=True, blank=True)
+    linkedin = models.URLField(max_length=200,null=True, blank=True)
+    twitter = models.URLField(max_length=200,null=True, blank=True)
+
+
+
+    @property
+    def imageURL(self):
+        try:
+            url = self.image.url
+        except:
+            url = ''
+        return url 
+
+
+    def __str__(self):
+        return self.name 
+
