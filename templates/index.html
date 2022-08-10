@@ -107,15 +107,17 @@
             </div>
         </div>
         <div class="row" id="tabs">
+            {% if latest_blogs %}
             <div class="col-lg-4">
                 <ul>
-                    {% if latest_blogs %}
+
                     <!-- <li><a href='#tabs-1'>Lorem ipsum dolor sit amet, consectetur adipisicing.</a></li> -->
                     {% for blog in latest_blogs %}
                     <li><a href='#tabs-{{blog.id}}'>{{blog.snippet}}</a></li>
-                    {% endfor %} {% endif %}
+                    {% endfor %}
                     <!-- <li><a href='#tabs-3'>Sunt hic recusandae vitae explicabo quidem laudantium corrupti non adipisci nihil.</a></li> -->
                     <div class="main-rounded-button"><a href="{% url 'blogs' %}">Read More</a></div>
+                    {% endif %}
                 </ul>
             </div>
             <div class="col-lg-8">
@@ -188,11 +190,11 @@
 
         </div>
 
-        <br>
-
+        <br> {% if latest_testimonies %}
         <div class="main-button text-center">
             <a href="{% url 'feedback' %}">Read More</a>
         </div>
+        {% endif %}
     </div>
 </section>
 <!-- ***** Testimonials Item End ***** -->
