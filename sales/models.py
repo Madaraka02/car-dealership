@@ -4,7 +4,7 @@ from autoslug import AutoSlugField
 # Create your models here.
 class Vehicle(models.Model):
     name = models.CharField(max_length=100, null=True, blank=True)
-    slug = AutoSlugField(populate_from='name')
+    slug = AutoSlugField(populate_from='name',null=True)
     condition = models.CharField(max_length=100, null=True, blank=True)
     make = models.CharField(max_length=100, null=True, blank=True)
     vehicle_type = models.CharField(max_length=100, null=True, blank=True)

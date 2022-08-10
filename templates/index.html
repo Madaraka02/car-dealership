@@ -30,7 +30,7 @@
             </div>
         </div>
         <div class="row">
-            {% for car in featured_vehiclees %}
+            {% if featured_vehiclees %} {% for car in featured_vehiclees %}
             <div class="col-lg-4">
                 <div class="trainer-item">
                     <div class="image-thumb">
@@ -57,7 +57,7 @@
                     </div>
                 </div>
             </div>
-            {% endfor %}
+            {% endfor %} {% endif %}
 
         </div>
 
@@ -109,17 +109,18 @@
         <div class="row" id="tabs">
             <div class="col-lg-4">
                 <ul>
+                    {% if latest_blogs %}
                     <!-- <li><a href='#tabs-1'>Lorem ipsum dolor sit amet, consectetur adipisicing.</a></li> -->
                     {% for blog in latest_blogs %}
                     <li><a href='#tabs-{{blog.id}}'>{{blog.snippet}}</a></li>
-                    {% endfor %}
+                    {% endfor %} {% endif %}
                     <!-- <li><a href='#tabs-3'>Sunt hic recusandae vitae explicabo quidem laudantium corrupti non adipisci nihil.</a></li> -->
                     <div class="main-rounded-button"><a href="{% url 'blogs' %}">Read More</a></div>
                 </ul>
             </div>
             <div class="col-lg-8">
                 <section class='tabs-content'>
-                    {% for blog in latest_blogs %}
+                    {% if latest_blogs %} {% for blog in latest_blogs %}
                     <article id='tabs-{{blog.id}}'>
                         <img src="{{single_blog.imageURL}}" alt="">
                         <h4>{{blog.title}}</h4>
@@ -131,6 +132,7 @@
                             <a href="{% url 'blog' blog.slug %}">Continue Reading</a>
                         </div>
                     </article>
+                    {% endfor %} {% endif %}
                 </section>
             </div>
         </div>
@@ -167,7 +169,7 @@
                     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem incidunt alias minima tenetur nemo necessitatibus?</p> -->
                 </div>
             </div>
-            {% for testimony in latest_testimonies %}
+            {% if latest_testimonies %} {% for testimony in latest_testimonies %}
             <div class="col-lg-6">
                 <ul class="features-items">
 
@@ -182,7 +184,7 @@
                     </li>
                 </ul>
             </div>
-            {% endfor %}
+            {% endfor %} {% endif %}
 
         </div>
 

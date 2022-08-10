@@ -10,7 +10,7 @@ def home(request):
     # call latest blogs
     latest_blogs = Blog.objects.all().order_by('-id')[:3]
     # call testimonies - slideshow
-    latest_testimonies = Testimony().objects.all().order_by('-id')[:4]
+    latest_testimonies = Testimony.objects.all().order_by('-id')[:4]
 
     context = {
         'featured_vehiclees':featured_vehiclees,
