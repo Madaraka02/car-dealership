@@ -24,7 +24,7 @@
             <div class="col-lg-6 offset-lg-3">
                 <div class="section-heading">
                     <h2>Featured <em>Cars</em></h2>
-                    <img src="assets/images/line-dec.png" alt="">
+                    <img src="{% static 'images/line-dec.png' %}" alt="">
                     <!-- <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p> -->
                 </div>
             </div>
@@ -70,14 +70,14 @@
 </section>
 <!-- ***** Cars Ends ***** -->
 
-<section class="section section-bg" id="schedule" style="background-image: url(assets/images/about-fullscreen-1-1920x700.jpg)">
+<section class="section section-bg" id="schedule" style="background-image: url(static/images/about-fullscreen-1-1920x700.jpg)">
     <div class="container">
         <div class="row">
             <div class="col-lg-6 offset-lg-3">
                 <div class="section-heading dark-bg">
                     <h2>Read <em>About Us</em></h2>
-                    <img src="assets/images/line-dec.png" alt="">
-                    <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
+                    <img src="{% static 'images/line-dec.png' %}" alt="">
+                    <p>Who we are</p>
                 </div>
             </div>
         </div>
@@ -101,8 +101,8 @@
             <div class="col-lg-6 offset-lg-3">
                 <div class="section-heading">
                     <h2>Read our <em>Blog</em></h2>
-                    <img src="assets/images/line-dec.png" alt="">
-                    <p>Nunc urna sem, laoreet ut metus id, aliquet consequat magna. Sed viverra ipsum dolor, ultricies fermentum massa consequat eu.</p>
+                    <img src="{% static 'images/line-dec.png'  %}" alt="">
+                    <p>Some of our articles</p>
                 </div>
             </div>
         </div>
@@ -139,7 +139,7 @@
 <!-- ***** Blog End ***** -->
 
 <!-- ***** Call to Action Start ***** -->
-<section class="section section-bg" id="call-to-action" style="background-image: url(assets/images/banner-image-1-1920x500.jpg)">
+<section class="section section-bg" id="call-to-action" style="background-image: url(static/images/banner-image-1-1920x500.jpg)">
     <div class="container">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
@@ -163,7 +163,7 @@
             <div class="col-lg-6 offset-lg-3">
                 <div class="section-heading">
                     <h2>Read our <em>Testimonials</em></h2>
-                    <img src="assets/images/line-dec.png" alt="waves">
+                    <img src="{% static 'images/line-dec.png' %}" alt="waves">
                     <!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem incidunt alias minima tenetur nemo necessitatibus?</p> -->
                 </div>
             </div>
@@ -173,7 +173,7 @@
 
                     <li class="feature-item">
                         <div class="left-icon">
-                            <img src="assets/images/features-first-icon.png" alt="First One">
+                            <img src="{% static 'images/features-first-icon.png' %}" alt="First One">
                         </div>
                         <div class="right-content">
                             <h4>{{testimony.name}}</h4>
