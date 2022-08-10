@@ -16,6 +16,7 @@ class Vehicle(models.Model):
     fuel = models.CharField(max_length=100, null=True, blank=True)
     gearbox = models.CharField(max_length=100, null=True, blank=True)
     doors = models.CharField(max_length=100, null=True, blank=True)
+    color = models.CharField(max_length=100, null=True, blank=True)
     number_of_seats = models.CharField(max_length=100, null=True, blank=True)
     additional_description = models.TextField(null=True, blank=True)
     image = models.FileField(upload_to='cars/images', null=True, blank=True)

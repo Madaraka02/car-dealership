@@ -20,6 +20,10 @@ def home(request):
 
     return render(request, 'index.html', context)
 
+def about(request):
+    return render(request, 'about.html')
+
+
 def cars(request):
     cars_list = Vehicle.objects.all().order_by('-id')
     page = request.GET.get('page', 1)
@@ -37,6 +41,7 @@ def cars(request):
     return render(request, 'cars.html', context)
 
 def blogs(request):
+    recent = Blog.objects.all().order_by('-id')[:3]
     blogs_list = Blog.objects.all().order_by('-id')
     page = request.GET.get('page', 1)
     paginator = Paginator(blogs_list, 6)
@@ -49,7 +54,8 @@ def blogs(request):
         blogs = paginator.page(paginator.num_pages)
     
     context = {
-        'blogs':blogs
+        'blogs':blogs,
+        'recent':recent
     }
     return render(request, 'blog.html', context)
 
