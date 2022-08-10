@@ -95,7 +95,7 @@ def testimony(request):
     context ={
         'form':form
     }  
-    return render(request, 'testimoy.html', context)   
+    return render(request, 'testimony.html', context)   
 
 
 def car(request, slug):
