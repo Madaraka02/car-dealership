@@ -120,11 +120,7 @@ def team(request):
     }
     return render(request, 'team.html', context)
 
-
-
-
-
-
+# ADMIN
 def caradmin(request):
     cars_list = Vehicle.objects.all().order_by('-id')
 
@@ -154,7 +150,7 @@ def caradmin(request):
         'fback_c':fback_c,
         'blog_c':blog_c
     }    
-    return render(request, 'caradmin/index.html')    
+    return render(request, 'caradmin/index.html', context)    
 
 def add_car(request):
     form = VehicleForm()
@@ -232,7 +228,7 @@ def team_edit(request, id):
         form = TeamForm(request.POST, request.FILES, instance=team)
         if form.is_valid():
             form.save()
-            return redirect('admin')
+            return redirect('adminteam')
     context = {
         'team':team,
         'form':form
@@ -242,7 +238,7 @@ def team_edit(request, id):
 def team_delete(request, id):
     team = get_object_or_404(Team, id=id)   
     team.delete()
-    return redirect('admin') 
+    return redirect('adminteam') 
 
 def vehicle_delete(request, id):
     vehicle = get_object_or_404(Vehicle, id=id)   
@@ -252,7 +248,7 @@ def vehicle_delete(request, id):
 def contact_delete(request, id):
     contact = get_object_or_404(Contact, id=id)   
     contact.delete()
-    return redirect('admin')     
+    return redirect('adminfeedback')     
 
 def testimonial_delete(request, id):
     testimonial = get_object_or_404(Testimony, id=id)   
