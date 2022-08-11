@@ -1,0 +1,164 @@
+{% extends 'caradmin/base.html' %} {% load static %} {% block title %} Admin - Feedback {% endblock title %} {% block content %}
+
+
+<!-- Content Start -->
+<div class="content">
+
+
+    <!-- adminblogs
+    add_blog -->
+
+
+
+    <!-- Recent Sales Start -->
+
+    <div class="container pt-4 px-4 mt-2 mb-2">
+        <h6>Testimonies</h6>
+
+        <div class="bg-light text-center rounded p-4">
+
+            <div class="d-flex align-items-center mb-4">
+                <!-- <h6 class="mb-0">Recent Salse</h6> -->
+                <div class="row mt-2 mb-2">
+                    {% for testimony in feedback %}
+                    <div class="col-md-3">
+                        <div class="card mt-2 mb-2">
+
+                            <div class="card-body">
+                                <p class="card-title">
+                                    {{testimony.name}}
+                                </p>
+                                <p class="card-text">
+                                    {{testimony.description}}
+
+                                </p>
+                                <div class="">
+
+                                    <a class="btn btn-sm btn-danger" href="{% url 'testimonial_delete' testimony.id %}">Delete</a>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+        {% if feedback.has_other_pages %}
+        <nav class="mt-2 mb-2">
+            <ul class="pagination justify-content-center">
+                {% if feedback.has_previous %}
+                <li class="page-item bg-dark">
+                    <a class="page-link" href="?page={{ feedback.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled bg-dark">
+                    <span class="page-link" aria-hidden="true">&laquo;</span>
+                </li>
+                {% endif %} {% for p in feedback.paginator.page_range %} {% if feedback.number == p %}
+                <li class="page-item bg-dark"><a class="page-link" style="color: rgb(246, 247, 252);" href="#">{{ p }}</a></li>
+                {% else %}
+                <li class="page-item bg-dark"><a class="page-link" href="?page={{ p }}">{{ p }}</a></li>
+                {% endif %} {% endfor %} {% if feedback.has_next %}
+                <li class="page-item bg-dark">
+                    <a class="page-link" href="?page={{ feedback.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled bg-dark">
+                    <span class="page-link" aria-hidden="true">&raquo;</span>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
+    <!-- Recent Sales End -->
+
+    <div class="container pt-4 px-4">
+        <h6>Messages</h6>
+
+        <div class="bg-light text-center rounded p-4">
+
+            <div class="d-flex align-items-center mb-4">
+                <!-- <h6 class="mb-0">Recent Salse</h6> -->
+                <div class="row mt-2 mb-2">
+                    {% for message in messages %}
+                    <div class="col-md-3">
+                        <div class="card mt-2 mb-2">
+
+                            <div class="card-body">
+                                <p class="card-title">
+                                    {{message.email}}
+                                </p>
+                                <p class="card-text">
+                                    {{message.subject}}
+
+                                </p>
+                                <p class="card-text">
+                                    {{message.message}}
+
+                                </p>
+                                <div class="">
+
+                                    <a class="btn btn-sm btn-danger" href="{% url 'contact_delete' message.id %}">Delete</a>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+        {% if messages.has_other_pages %}
+        <nav class="mt-2 mb-2">
+            <ul class="pagination justify-content-center">
+                {% if messages.has_previous %}
+                <li class="page-item bg-dark">
+                    <a class="page-link" href="?page={{ messages.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled bg-dark">
+                    <span class="page-link" aria-hidden="true">&laquo;</span>
+                </li>
+                {% endif %} {% for p in messages.paginator.page_range %} {% if messages.number == p %}
+                <li class="page-item bg-dark"><a class="page-link" style="color: rgb(246, 247, 252);" href="#">{{ p }}</a></li>
+                {% else %}
+                <li class="page-item bg-dark"><a class="page-link" href="?page={{ p }}">{{ p }}</a></li>
+                {% endif %} {% endfor %} {% if messages.has_next %}
+                <li class="page-item bg-dark">
+                    <a class="page-link" href="?page={{ messages.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled bg-dark">
+                    <span class="page-link" aria-hidden="true">&raquo;</span>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
+
+    <!-- Footer End -->
+</div>
+<!-- Content End -->
+
+
+<!-- Back to Top -->
+<!-- <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a> -->
+</div>
+{% endblock content %}

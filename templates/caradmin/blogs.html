@@ -1,0 +1,95 @@
+{% extends 'caradmin/base.html' %} {% load static %} {% block title %} Admin - Blogs {% endblock title %} {% block content %}
+
+
+<!-- Content Start -->
+<div class="content">
+
+
+    <!-- adminblogs
+    add_blog -->
+
+
+
+    <!-- Recent Sales Start -->
+
+    <div class="container pt-4 px-4">
+        <a class="btn btn-sm btn-outline-primary mb-2 mt-2" href="{% url 'add_blog' %}">Add Blog</a>
+
+        <div class="bg-light text-center rounded p-4">
+
+            <div class="d-flex align-items-center mb-4">
+                <!-- <h6 class="mb-0">Recent Salse</h6> -->
+                <div class="row mt-2 mb-2">
+                    {% for blog in blogs %}
+                    <div class="col-md-3">
+                        <div class="card mt-2 mb-2">
+
+                            <img class="card-img-top img-fluid" src="{{blog.imageURL}}" alt="">
+
+                            <div class="card-body">
+                                <p class="card-title">
+                                    {{blog.title}}
+                                </p>
+                                <p class="card-text">
+                                    {{blog.snippet}}
+                                </p>
+                                <div class="">
+                                    <a class="btn btn-sm btn-primary" href="{% url 'blog_edit' blog.id %}">Edit</a>
+                                    <a class="btn btn-sm btn-danger" href="{% url 'blog_delete' blog.id %}">Delete</a>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </div>
+        {% if blogs.has_other_pages %}
+        <nav class="mt-2 mb-2">
+            <ul class="pagination justify-content-center">
+                {% if blogs.has_previous %}
+                <li class="page-item bg-dark">
+                    <a class="page-link" href="?page={{ blogs.previous_page_number }}" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled bg-dark">
+                    <span class="page-link" aria-hidden="true">&laquo;</span>
+                </li>
+                {% endif %} {% for p in blogs.paginator.page_range %} {% if blogs.number == p %}
+                <li class="page-item bg-dark"><a class="page-link" style="color: rgb(246, 247, 252);" href="#">{{ p }}</a></li>
+                {% else %}
+                <li class="page-item bg-dark"><a class="page-link" href="?page={{ p }}">{{ p }}</a></li>
+                {% endif %} {% endfor %} {% if blogs.has_next %}
+                <li class="page-item bg-dark">
+                    <a class="page-link" href="?page={{ blogs.next_page_number }}" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                {% else %}
+                <li class="page-item disabled bg-dark">
+                    <span class="page-link" aria-hidden="true">&raquo;</span>
+                </li>
+                {% endif %}
+            </ul>
+        </nav>
+        {% endif %}
+    </div>
+    <!-- Recent Sales End -->
+
+
+
+    <!-- Footer End -->
+</div>
+<!-- Content End -->
+
+
+<!-- Back to Top -->
+<!-- <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a> -->
+</div>
+{% endblock content %}
